@@ -56,4 +56,9 @@ INSANE_SKIP:${PN} += "textrel dev-so"
 do_install:append () {
     rm -f ${D}/opt/intel/oneapi/lib/libomptarget.rtl.x86_64.so
     echo "/opt/intel/oneapi/lib/emu/libintelocl_emu.so" > ${D}/opt/intel/oneapi/lib/etc/Intel_FPGA_SSG_Emulator.icd
+
+    install -d ${D}${libdir}
+    (cd ${D}${libdir} ; ln -s ../../opt/intel/oneapi/lib/intel64/*.so* .)
 }
+
+SYSROOT_DIRS += "/opt"
