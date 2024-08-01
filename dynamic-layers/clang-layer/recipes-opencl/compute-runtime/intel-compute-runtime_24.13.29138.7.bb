@@ -19,7 +19,7 @@ SRCREV = "7131387cdbb02d480a225c70daef913a6c024a6e"
 
 S = "${WORKDIR}/git"
 
-DEPENDS += " intel-graphics-compiler gmmlib libva qemu-native"
+DEPENDS += " intel-graphics-compiler gmmlib libva-initial qemu-native"
 
 RDEPENDS:${PN} += " intel-graphics-compiler gmmlib"
 
