@@ -38,7 +38,7 @@ CXXFLAGS:append = " -Wno-error=nonnull"
 COMPATIBLE_HOST = '(x86_64).*-linux'
 COMPATIBLE_HOST:libc-musl = "null"
 
-DEPENDS += " flex-native bison-native clang clang-cross-x86_64 opencl-clang qemu-native python3-mako-native"
+DEPENDS += " flex-native bison-native clang15 clang15-cross-x86_64 opencl-clang qemu-native python3-mako-native"
 
 RDEPENDS:${PN} += "opencl-clang"
 
@@ -46,7 +46,7 @@ PACKAGECONFIG ??= "vc"
 PACKAGECONFIG[vc] = "-DIGC_BUILD__VC_ENABLED=ON -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR=ON -DIGC_OPTION__SPIRV_TRANSLATOR_MODE=Prebuilds,-DIGC_BUILD__VC_ENABLED=OFF,"
 
 EXTRA_OECMAKE = " \
-                  -DIGC_OPTION__LLVM_PREFERRED_VERSION=${LLVMVERSION} \
+                  -DIGC_OPTION__LLVM_PREFERRED_VERSION=${LLVM15VERSION} \
                   -DVC_INTRINSICS_SRC="${S}/vc-intrinsics" \
                   -DIGC_OPTION__LLVM_MODE=Prebuilds \
                   -DLLVM_TABLEGEN=${STAGING_BINDIR_NATIVE}/llvm-tblgen \
