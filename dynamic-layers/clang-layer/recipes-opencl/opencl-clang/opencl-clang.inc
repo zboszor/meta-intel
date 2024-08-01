@@ -12,18 +12,18 @@ SRC_URI = "git://github.com/intel/opencl-clang.git;branch=${BRANCH};protocol=htt
 S = "${WORKDIR}/git"
 
 inherit cmake
-DEPENDS += "clang"
+DEPENDS += "clang15"
 DEPENDS:append:class-target = " opencl-clang-native"
 
 COMPATIBLE_HOST = '(x86_64).*-linux'
 COMPATIBLE_HOST:libc-musl = "null"
 
-DEPENDS += " spirv-llvm-translator"
+DEPENDS += " spirv-llvm-translator-llvm15"
 
 EXTRA_OECMAKE += "\
                   -DLLVM_TABLEGEN_EXE=${STAGING_BINDIR_NATIVE}/llvm-tblgen \
                   -DCMAKE_SKIP_RPATH=TRUE \
-                  -DPREFERRED_LLVM_VERSION=${LLVMVERSION} \
+                  -DPREFERRED_LLVM_VERSION=${LLVM15VERSION} \
                   "
 
 do_install:append:class-native() {
