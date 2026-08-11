@@ -33,7 +33,7 @@ S = "${WORKDIR}/git"
 
 inherit cmake pkgconfig qemu python3native
 
-CXXFLAGS:append = " -Wno-error=nonnull"
+CXXFLAGS:append = " -Wno-error=nonnull -Wno-error=stringop-overread -Wno-error=array-bounds"
 
 COMPATIBLE_HOST = '(x86_64).*-linux'
 COMPATIBLE_HOST:libc-musl = "null"
